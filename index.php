@@ -39,5 +39,20 @@ require_once 'connectDB.php';
             <button type="submit" name="add_task">追加</button>
         </form>
     </div>
+    
+    <div class="search">
+        <h2>フィルター/検索</h2>
+        <form action="search.php" method="post">
+            <input type="text" name="keyword" placeholder="キーワード" required>
+            <select name="priority" required>
+                <option value="-1" disabled selected>優先度(全て)</option>
+                <option value="0">低</option>
+                <option value="1">中</option>
+                <option value="2">高</option>
+            </select>
+            <button type="submit" name="search"> 適用</button>
+        </form>
+    </div>
+    
 </body>
 </html>
