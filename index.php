@@ -16,6 +16,7 @@ require_once 'connectDB.php';
         <span>
             <?php if (isset($_SESSION['username'])): ?>
                 <?= $_SESSION['username'] ?>さん
+            <?php endif ?>
             <a href="logout.php">ログアウト</a>
         </span>
     </div>
