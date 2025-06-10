@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $username = $_POST['user_name'];
         $password = $_POST['password'];
         $pdo = connectDB();
-        $sql='SELECT * FROM user WHERE username = ? AND password = ?';
+        $sql='SELECT * FROM users WHERE username = ? AND password = ?';
         $stmt=$pdo->prepare($sql);
         $stmt->execute([$username, $password]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
