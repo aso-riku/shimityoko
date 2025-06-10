@@ -7,11 +7,11 @@
 </head>
 <body>
     <h1>ログイン</h1>
-    <form action="">
+    <form action="check.php" method="post" name="action">
         ユーザ名：<input type="text" name="user_name"><br>
-        パスワード：<input type="text" name="password"><br>
-        <button name="">ログイン</button><br><br>
+        パスワード：<input type="password" name="password"><br>
+        <button type="submit" name="action" value="login">ログイン</button><br><br>
     </form>
-    <link a href="">
+    <a href="register.php">新規登録</a>
 </body>
 </html>
