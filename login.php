@@ -10,7 +10,7 @@
     <form action="check.php" method="post" name="action">
         ユーザ名：<input type="text" name="user_name"><br>
         パスワード：<input type="password" name="password"><br>
-        <button type="submit" name="action" value="login">ログイン</button><br><br>
+        <button type="submit" name="login">ログイン</button><br><br>
     </form>
     <a href="register.php">新規登録</a>
 </body>
