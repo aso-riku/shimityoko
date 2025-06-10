@@ -32,9 +32,9 @@ require_once 'connectDB.php';
             <input type="text" name="task_name" placeholder="タスク内容" required>
             <input type="date" name="due_date" required>
             <select name="priority" required>
-                <option value="low" disabled selected>優先度(低)</option>
-                <option value="medium">中</option>
-                <option value="high">高</option>
+                <option value="0" disabled selected>優先度(低)</option>
+                <option value="1">中</option>
+                <option value="2">高</option>
             </select>
             <button type="submit" name="add_task">追加</button>
         </form>
