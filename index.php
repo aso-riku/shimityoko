@@ -15,7 +15,7 @@ require_once 'connectDB.php';
         <h1>ToDOリスト</h1>
         <span>
             <?php if (isset($_SESSION['user_name'])): ?>
-                <?= $_SESSION['username'] ?>さん
+                <?= $_SESSION['user_name'] ?>さん
             <?php endif ?>
             <a href="logout.php">ログアウト</a>
         </span>
