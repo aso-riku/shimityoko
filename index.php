@@ -19,6 +19,13 @@ require_once 'connectDB.php';
         </span>
     </div>
 
+    <div class="message">
+        <?php if (isset($_SESSION['message'])): ?>
+            <p><?= $_SESSION['message'] ?></p>
+            <?php unset($_SESSION['message']); ?>
+        <?php endif; ?>
+    </div>
+
     <div class="addTask">
         <h2>タスク追加</h2>
         <form action="add_task.php" method="post">
