@@ -14,8 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             exit('ユーザー名とパスワードは必須です');
         }
 
-        $hash = password_hash($password, PASSWORD_DEFAULT);
-
         $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");
         $stmt->execute([$username]);
         if ($stmt->fetch()) {
