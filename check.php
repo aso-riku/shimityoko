@@ -33,7 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "ログインボタンが押されました（処理未実装）。";
         $username = $_POST['user_name'];
         $password = $_POST['password'];
-        $pdo = connectDB_local();
         $sql='SELECT * FROM users WHERE username = ? AND password = ?';
         $stmt=$pdo->prepare($sql);
         $stmt->execute([$username, $password]);
