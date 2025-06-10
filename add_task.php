@@ -10,7 +10,7 @@ $date = date('Y-m-d H:i:s');
 $pdo = connectDB_local();
 $sql = "INSERT INTO todos (user_id, task, due_date, priority, created_at) VALUES (?, ?, ?, ?, ?)";
 $stmt = $pdo->prepare($sql);
-$stmt->execute([1, $task_name, $due_date, $priority, $date]);
+$stmt->execute([$_SESSION['user_id'], $task_name, $due_date, $priority, $date]);
 
 if ($stmt->rowCount() > 0) {
     $_SESSION['message'] = 'タスクが追加されました。';
