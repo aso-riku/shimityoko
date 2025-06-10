@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "connectDB.php";
 
 $pdo = connectDB_local();
@@ -30,6 +31,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (isset($_POST['login'])) {
         echo "ログインボタンが押されました（処理未実装）。";
+        $username = $_POST['user_name'];
+        $password = $_POST['password'];
+        $pdo = connectDB();
+        $sql='SELECT * FROM user WHERE username = ? AND password = ?';
+        $stmt=$pdo->prepare($sql);
+        $stmt->execute([$username, $password]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if(!empty($result)){
+            $_SESSION['id'] = $result['id'];
+            $_SESSION['name'] = $result['user_name'];
+            header('Location: add_task.php');
+            exit;
+        }else{
+            header('Location: login.php');
+            exit;
+        }
         exit;
     }
 
