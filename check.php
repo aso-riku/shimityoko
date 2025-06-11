@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         $stmt = $pdo->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-        $stmt->execute([$username, $hash]);
+        $stmt->execute([$username, $password]);
 
         echo "登録が完了しました。<a href='login.php'>ログイン</a>へ";
         exit;
