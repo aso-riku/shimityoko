@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $id = $pdo->lastInsertId();
 
         if(!empty($result)){
-            $_SESSION['user_id'] = $id;
+            $_SESSION['user_id'] = $result['id'];
             $_SESSION['user_name'] = $result['username'];
             header('Location: index.php');
             exit;
