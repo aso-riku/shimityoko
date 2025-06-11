@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>ログイン</h1>
-    <form action="check.php" method="post" name="action">
+    <form action="check.php" method="post">
         ユーザ名：<input type="text" name="user_name"><br>
         パスワード：<input type="password" name="password"><br>
         <button type="submit" name="login">ログイン</button><br><br>
