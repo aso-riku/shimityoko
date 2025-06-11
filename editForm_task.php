@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user_id'])) {
+    exit('ログインしてください。');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -7,7 +15,8 @@
 </head>
 <body>
     <h1>タスク編集</h1>
-    <form action="">
+    <form action="editExe_task.php">
+    <input type="hidden" name="task_id" value="<?= htmlspecialchars($task_id) ?>">
         内容:<input type="text" name="update_content" value="仮" required><br>
         期限:<input type="date" name="update_time_limit" required><br>
         優先度:
