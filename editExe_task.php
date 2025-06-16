@@ -15,10 +15,10 @@ if ($task_id === '' || trim($content) === '' || $time_limit === '' || $priority 
 }
 
 
-$sql = "UPDATE tasks SET content = ?, time_limit = ?, priority = ?, status = ? WHERE id = ?";
+$sql = "UPDATE todos SET task = ?, due_date = ?, priority = ?, status = ? WHERE id = ?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$content, $time_limit, $priority, $status, $task_id]);
 
-// 完了後リダイレクト
+
 header("Location: index.php");
 exit;

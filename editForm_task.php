@@ -38,12 +38,13 @@ $task = $stmt->fetch();
             </select><br>
         状態:
             <select name="status" required>
-                <option value="incomplete" <?= $task['status'] == 'todo' ? 'selected' : '' ?>>未完了</option>
-                <option value="complete" <?= $task['status'] == 'done' ? 'selected' : '' ?>>完了</option>
+                <option value="todo" <?= $task['status'] == 'todo' ? 'selected' : '' ?>>未完了</option>
+                <option value="done" <?= $task['status'] == 'done' ? 'selected' : '' ?>>完了</option>
             </select><br>
             <button type="submit" name="edit">保存</button><br>
             <a href="index.php">キャンセル</a>
     </form>
     
+
 </body>
 </html>
