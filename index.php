@@ -117,13 +117,12 @@ if (isset($_GET['search'])) {
                 <td>{$priority}</td>
                 <td>
                     <a href='editForm_task.php?id={$row['id']}'>編集</a>
-                    <a href='delete_task.php?id={$row['id']}'>削除</a>
+                    <a href='delete_task.php?id={$row['id']}' onclick=\"return confirm('削除しますか？');\">削除</a>
                 </td>
               </tr>";
     }
     ?>
 
     </table>
-
 </body>
 </html>
