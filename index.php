@@ -3,10 +3,10 @@ session_start();
 require_once 'connectDB.php';
 $pdo = connectDB_local();
 
-if (isset($_POST['search'])) {
-    $keyword = $_POST['keyword'];
-    $status = $_POST['status'];
-    $priority = $_POST['priority'];
+if (isset($_GET['search'])) {
+    $keyword = $_GET['keyword'];
+    $status = $_GET['status'];
+    $priority = $_GET['priority'];
 
     $query = "SELECT * FROM todos WHERE task LIKE :keyword";
     $params = [':keyword' => "%$keyword%"];
@@ -78,7 +78,7 @@ if (isset($_POST['search'])) {
     
     <div class="search">
         <h2>フィルター/検索</h2>
-        <form action="index.php" method="post">
+        <form action="index.php" method="get">
             <input type="text" name="keyword" placeholder="キーワード">
 
             <select name="status" required>
