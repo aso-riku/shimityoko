@@ -61,6 +61,8 @@ if (isset($_GET['search'])) {
             <?php unset($_SESSION['message']); ?>
         <?php endif; ?>
     </div>
+    
+    <progress id="myProgress" value="0" max="100">0%</progress>
 
     <div class="addTask">
         <h2>タスク追加</h2>
