@@ -109,23 +109,80 @@ if (isset($_GET['search'])) {
             <th>操作</th>
         </tr>
 
-    <?php
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-        $priority = ['低', '中', '高'][$row['priority']];
-        echo "<tr>
-                <td>{$row['status']}</td>
-                <td>{$row['task']}</td>
-                <td>{$row['due_date']}</td>
-                <td>{$priority}</td>
-                <td>
-                    <a href='editForm_task.php?id={$row['id']}'>編集</a>
-                    <a href='delete_task.php?id={$row['id']}' onclick=\"return confirm('削除しますか？');\">削除</a>
-                </td>
-              </tr>";
-    }
-    ?>
+        <?php
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            $priority = ['低', '中', '高'][$row['priority']];
+            $isChecked = $row['status'] === 'done' ? 'checked' : '';
+            $rowClass = $row['status'] === 'done' ? 'done-row' : '';
+            $taskId = $row['id'];
 
-    </table>
-    
+            echo "<tr data-id='{$taskId}' class='{$rowClass}'>
+                    <td><input type='checkbox' class='status-checkbox' data-id='{$taskId}' {$isChecked}></td>
+                    <td>{$row['task']}</td>
+                    <td>{$row['due_date']}</td>
+                    <td>{$priority}</td>
+                    <td>
+                        <a href='editForm_task.php?id={$row['id']}'>編集</a>
+                        <a href='delete_task.php?id={$row['id']}' onclick=\"return confirm('削除しますか？');\">削除</a>
+                    </td>
+                </tr>";
+        }
+        ?>
+        </table>
+
+        <style>
+        /* 行全体に横線を入れる */
+        .done-row td {
+            text-decoration: line-through;
+            color: gray;
+        }
+        </style>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('.status-checkbox');
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function () {
+                    const row = this.closest('tr');
+                    const taskId = this.dataset.id;
+                    const isChecked = this.checked;
+                    const newStatus = isChecked ? 'done' : 'todo';
+
+                    if (this.checked) {
+                        row.classList.add('done-row');
+                    } else {
+                        row.classList.remove('done-row');
+                    }
+
+                    // クラスの切り替え（見た目用）
+                    row.classList.toggle('done-task', isChecked);
+
+                    // サーバーに状態変更を送信
+                    fetch('update_status.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: `id=${encodeURIComponent(taskId)}&status=${encodeURIComponent(newStatus)}`
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.success) {
+                            alert('更新に失敗しました: ' + (data.error || ''));
+                            // チェックを元に戻す
+                            this.checked = !isChecked;
+                            row.classList.toggle('done-task', !isChecked);
+                        }
+                    })
+                    .catch(error => {
+                        alert('通信エラーが発生しました');
+                        this.checked = !isChecked;
+                        row.classList.toggle('done-task', !isChecked);
+                    });
+                });
+            });
+        });
+        </script>
 </body>
 </html>
