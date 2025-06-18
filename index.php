@@ -42,6 +42,7 @@ if (isset($_GET['search'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
     <title>Document</title>
 </head>
 <body>
@@ -97,6 +98,7 @@ if (isset($_GET['search'])) {
             <button type="submit" name="search"> 適用</button>
         </form>
     </div><br>
+
 
     <table border="1">
         <tr>

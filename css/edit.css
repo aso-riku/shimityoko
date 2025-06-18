@@ -1,0 +1,84 @@
+/* --- 全体の基本設定 --- */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0 20px; 
+}
+
+/* --- コンテンツ全体のコンテナ --- */
+.container {
+    max-width: 600px;
+    margin: 50px auto; 
+    width: calc(100% - 40px);
+    padding: 20px 40px 40px 40px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* --- フォームの各項目 --- */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block; /* ラベルをブロック要素にして入力欄の上に配置 */
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: left; /* ラベルは左揃えの方が見やすい */
+}
+
+/* --- 入力部品（テキスト、日付、セレクトボックス） --- */
+input[type="text"],
+input[type="date"],
+select {
+    width: 100%; /* 親要素の幅いっぱいに広げる */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box; /* paddingを含めてwidth:100%にするため */
+}
+
+/* --- 送信ボタンとキャンセルリンクのエリア --- */
+.form-actions {
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* --- ボタンのスタイル --- */
+.form-actions button {
+    padding: 12px 30px;
+    background-color: #007bff; /* メインの操作ボタンの色 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+.form-actions button:hover {
+    background-color: #0056b3;
+}
+
+/* --- キャンセルリンク --- */
+.form-actions a {
+    display: inline-block;
+    margin-left: 20px;
+    color: #6c757d; /* 少し控えめな色 */
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.form-actions a:hover {
+    text-decoration: underline;
+}
