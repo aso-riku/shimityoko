@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+/* 全体のスタイル */
+body {
+    font-family: serif;
+    background-color: #f4f7f6; /* 背景を少しグレーに */
+    color: #333;
+    margin: 0;
+    /* 画面全体を使って、コンテンツを中央に配置 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* フォーム全体を囲むカード */
+.form-container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* 影をつけて立体感を出す */
+    width: 100%;
+    max-width: 400px;
+}
+
+/* 見出しのスタイル */
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-weight: 700;
+}
+
+/* フォームのスタイル */
+form {
+    display: flex;
+    flex-direction: column; /* 要素を縦に並べる */
+}
+
+/* 各入力要素 */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* paddingを含めて幅を100%に */
+    margin-bottom: 15px; /* <br>の代わりに余白を設定 */
+    font-size: 16px;
+}
+
+/* 入力欄が選択されたときのスタイル */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.2);
+}
+
+/* ボタンのスタイル */
+button {
+    font-family: serif;
+    background-color: #3498db; /* 目立つ色に */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+
+button:hover {
+    background-color: #2980b9; /* カーソルを乗せたときに色を少し濃くする */
+}
+
+/* 「新規登録」などのリンクのスタイル */
+a {
+    color: #3498db;
+    text-decoration: none;
+    text-align: center;
+    display: block; /* 中央揃えのためにブロック要素に */
+}
+
+a:hover {
+    text-decoration: underline;
+}
