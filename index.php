@@ -8,8 +8,9 @@ if (isset($_POST['search'])) {
     $status = $_POST['status'];
     $priority = $_POST['priority'];
 
-    $query = "SELECT * FROM todos WHERE task LIKE :keyword";
-    $params = [':keyword' => "%$keyword%"];
+    $query = "SELECT * FROM todos WHERE user_id = :user_id task LIKE :keyword";
+    $params = [':user_id' => $_SESSION['user_id'],
+               ':keyword' => "%$keyword%"];
 
     if ($status != "-1") {
         $query .= " AND status = :status";
