@@ -14,8 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
 
         if ($success) {
-            $select = $pdo->query('SELECT COUNT(*) FROM todos');
-            $where = $pdo->query("SELECT COUNT(*) FROM todos WHERE status = 'done'");
+            $total = (int)$pdo->query('SELECT COUNT(*) FROM todos')->fetchColumn();
+            $done = (int)$pdo->query("SELECT COUNT(*) FROM todos WHERE status = 'done'")->fetchColumn();
             echo json_encode(['success' => true,
                               'total' => $total,
                               'done' => $done
