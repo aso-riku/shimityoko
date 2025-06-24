@@ -169,12 +169,13 @@ if (isset($_GET['search'])) {
                     })
                     .then(response => response.json())
                     .then(data => {
-                        if (!data.success) {
-                            const persent = data.total > 0 ? Math.round((data.done / data.total) * 100) : 0;
-                            const progress =  document.getElementsById('myProgress');
-                            progress.value = parent;
-                            document.getElementById('progressText').textContent = `${percentage}%`;
-                            document.getElementById('myProgress').value = percent;
+                        if (data.success) {
+                            const percentage = data.total > 0 ? Math.round((data.done / data.total) * 100) : 0;
+                            const progress =  document.getElementById('myProgress');
+                            progress.value = percentage;
+                            document.getElementById('progressText').textContent = `進捗：${percentage}%`;
+                            document.getElementById('myProgress').value = percentage;
+                        }else{
                             alert('更新に失敗しました: ' + (data.error || ''));
                             // チェックを元に戻す
                             this.checked = !isChecked;
