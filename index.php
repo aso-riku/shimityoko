@@ -62,7 +62,7 @@ if (isset($_GET['search'])) {
         <?php endif; ?>
     </div>
     
-    <span id="progressText">0$</span>
+    <span id="progressText">0％</span>
     <progress id="myProgress" value="0" max="100">0%</progress>
 
     <div class="addTask">
