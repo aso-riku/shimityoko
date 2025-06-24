@@ -14,13 +14,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
 
         if ($success) {
-            echo json_encode(['success' => true]);
+            $total = (int)$pdo->query('SELECT COUNT(*) FROM todos')->fetchColumn();
+            $done = (int)$pdo->query("SELECT COUNT(*) FROM todos WHERE status = 'done'")->fetchColumn();
+            echo json_encode(['success' => true,
+                              'total' => $total,
+                              'done' => $done
+                            ]);
         } else {
             echo json_encode(['success' => false, 'error' => 'DB update failed']);
         }
     } else {
         echo json_encode(['success' => false, 'error' => 'Invalid input']);
     }
+
+
 } else {
     echo json_encode(['success' => false, 'error' => 'Invalid request method']);
-}
+}    
