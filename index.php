@@ -49,6 +49,7 @@ if (isset($_GET['search'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/progress.css">
     <title>Document</title>
 </head>
 <body>
@@ -69,7 +70,7 @@ if (isset($_GET['search'])) {
         <?php endif; ?>
     </div>
     
-    <span id="progressText">0％</span>
+    <span id="progressText">進捗：0％</span><br>
     <progress id="myProgress" value="0" max="100">0%</progress>
 
     <div class="addTask">
@@ -181,7 +182,7 @@ if (isset($_GET['search'])) {
                             const percentage = data.total > 0 ? Math.round((data.done / data.total) * 100) : 0;
                             const progress =  document.getElementById('myProgress');
                             progress.value = percentage;
-                            document.getElementById('progressText').textContent = `進捗：${percentage}%`;
+                            document.getElementById('progressText').textContent = `${percentage}%`;
                             document.getElementById('myProgress').value = percentage;
                         }else{
                             alert('更新に失敗しました: ' + (data.error || ''));
