@@ -182,7 +182,7 @@ if (isset($_GET['search'])) {
                             const percentage = data.total > 0 ? Math.round((data.done / data.total) * 100) : 0;
                             const progress =  document.getElementById('myProgress');
                             progress.value = percentage;
-                            document.getElementById('progressText').textContent = `${percentage}%`;
+                            document.getElementById('progressText').textContent = `進捗：${percentage}%`;
                             document.getElementById('myProgress').value = percentage;
                         }else{
                             alert('更新に失敗しました: ' + (data.error || ''));
