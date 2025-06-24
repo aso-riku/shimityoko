@@ -62,6 +62,7 @@ if (isset($_GET['search'])) {
         <?php endif; ?>
     </div>
     
+    <span id="progressText">0$</span>
     <progress id="myProgress" value="0" max="100">0%</progress>
 
     <div class="addTask">
@@ -169,6 +170,11 @@ if (isset($_GET['search'])) {
                     .then(response => response.json())
                     .then(data => {
                         if (!data.success) {
+                            const persent = data.total > 0 ? Math.round((data.done / data.total) * 100) : 0;
+                            const progress =  document.getElementsById('myProgress');
+                            progress.value = parent;
+                            document.getElementById('progressText').textContent = `${percentage}%`;
+                            document.getElementById('myProgress').value = percent;
                             alert('更新に失敗しました: ' + (data.error || ''));
                             // チェックを元に戻す
                             this.checked = !isChecked;
