@@ -39,7 +39,7 @@ if (isset($_GET['search'])) {
     $result = $stmt;
 
 } else {
-    $result = $pdo->query('SELECT * FROM todos');
+    $result = $pdo->query('SELECT * FROM todos WHERE user_id = ' . $_SESSION['user_id']);
 }
 ?>
 
