@@ -3,14 +3,19 @@ session_start();
 require_once 'connectDB.php';
 $pdo = connectDB_local();
 
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
 if (isset($_GET['search'])) {
     $keyword = $_GET['keyword'];
     $status = $_GET['status'];
     $priority = $_GET['priority'];
 
-    $query = "SELECT * FROM todos WHERE user_id = :user_id task LIKE :keyword";
-    $params = [':user_id' => $_SESSION['user_id'],
-               ':keyword' => "%$keyword%"];
+    $query = "SELECT * FROM todos WHERE user_id = :user_id AND task LIKE :keyword";
+    $params = [':user_id' => $_SESSION['user_id']];
+    $params[':keyword'] = "%$keyword%";
 
     if ($status != "-1") {
         $query .= " AND status = :status";
