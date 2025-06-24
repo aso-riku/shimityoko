@@ -71,7 +71,7 @@ if (isset($_GET['search'])) {
     </div>
     
     <span id="progressText">進捗：0％</span><br>
-    <progress id="myProgress" value="0" max="100">0%</progress>
+    <progress class="progress" id="myProgress" value="0" max="100">0%</progress>
 
     <div class="addTask">
         <h2>タスク追加</h2>
