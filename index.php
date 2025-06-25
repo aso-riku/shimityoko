@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once 'connectDB.php';
-$pdo = connectDB_local();
+$pdo = connectDB();
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');

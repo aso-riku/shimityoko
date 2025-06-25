@@ -6,7 +6,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 require_once 'connectDB.php';
-$pdo = connectDB_local();
+$pdo = connectDB();
 
 $task_id = $_GET['id'] ?? '';
 
