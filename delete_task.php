@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once "connectDB.php";
-$pdo = connectDB_local();
+$pdo = connectDB();
 
 
 $task_id = $_GET['id'] ?? '';

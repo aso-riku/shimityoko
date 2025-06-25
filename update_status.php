@@ -1,6 +1,6 @@
 <?php
 require_once 'connectDB.php';
-$pdo = connectDB_local();
+$pdo = connectDB();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'] ?? null;

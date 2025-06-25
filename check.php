@@ -2,7 +2,7 @@
 session_start();
 require_once "connectDB.php";
 
-$pdo = connectDB_local();
+$pdo = connectDB();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
@@ -28,7 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     if (isset($_POST['login'])) {
-        echo "ログインボタンが押されました（処理未実装）。";
         $username = $_POST['user_name'];
         $password = $_POST['password'];
 

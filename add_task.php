@@ -7,7 +7,7 @@ $due_date = $_POST['due_date'] ?? '';
 $priority = $_POST['priority'] ?? '';
 $date = date('Y-m-d H:i:s');
 
-$pdo = connectDB_local();
+$pdo = connectDB();
 $sql = "INSERT INTO todos (user_id, task, due_date, priority, created_at) VALUES (?, ?, ?, ?, ?)";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$_SESSION['user_id'], $task_name, $due_date, $priority, $date]);
