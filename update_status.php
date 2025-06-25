@@ -14,8 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ]);
 
         if ($success) {
-            $total = (int)$pdo->query('SELECT COUNT(*) FROM todos')->fetchColumn();
-            $done = (int)$pdo->query("SELECT COUNT(*) FROM todos WHERE status = 'done'")->fetchColumn();
+            $stmt = $pdo->prepare('SELECT COUNT(*) FROM todos WHERE user_id = ?');
+            $total = (int)$stmt->execute([$_SESSION['user_id']]) ? $stmt->fetchColumn() : 0;
+            $stmt = $pdo->prepare("SELECT COUNT(*) FROM todos WHERE user_id = ? AND status = 'done'");
+            $done = (int)$stmt->execute([$_SESSION['user_id']]) ? $stmt->fetchColumn() : 0;
             echo json_encode(['success' => true,
                               'total' => $total,
                               'done' => $done
